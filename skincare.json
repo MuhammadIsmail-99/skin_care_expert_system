@@ -1,0 +1,1602 @@
+[
+  {
+    "rule_id": "R001",
+    "if_text": "If skin is oily AND has acne",
+    "then_concl": "AcneProneOilySkin",
+    "antecedent_logic": "And(OilySkin, HasAcne)",
+    "cf": 0.95,
+    "priority": 10
+  },
+  {
+    "rule_id": "R002",
+    "if_text": "If skin is dry AND feels tight",
+    "then_concl": "DrySkinCondition",
+    "antecedent_logic": "And(DrySkin, SkinFeelsTight)",
+    "cf": 0.90,
+    "priority": 9
+  },
+  {
+    "rule_id": "R003",
+    "if_text": "If AcneProneOilySkin is confirmed",
+    "then_concl": "UseSalicylicAcidCleanser",
+    "antecedent_logic": "AcneProneOilySkin",
+    "cf": 0.92,
+    "priority": 15
+  },
+  {
+    "rule_id": "R004",
+    "if_text": "If DrySkinCondition is confirmed",
+    "then_concl": "UseHyaluronicAcidSerum",
+    "antecedent_logic": "DrySkinCondition",
+    "cf": 0.88,
+    "priority": 14
+  },
+  {
+    "rule_id": "R005",
+    "if_text": "If has wrinkles AND age over 40",
+    "then_concl": "AgingSkinConcern",
+    "antecedent_logic": "And(HasWrinkles, AgeOver40)",
+    "cf": 0.93,
+    "priority": 12
+  },
+  {
+    "rule_id": "R006",
+    "if_text": "If has dark spots OR hyperpigmentation",
+    "then_concl": "PigmentationIssue",
+    "antecedent_logic": "Or(HasDarkSpots, HasHyperpigmentation)",
+    "cf": 0.89,
+    "priority": 11
+  },
+  {
+    "rule_id": "R007",
+    "if_text": "If AgingSkinConcern is confirmed",
+    "then_concl": "UseRetinolTreatment",
+    "antecedent_logic": "AgingSkinConcern",
+    "cf": 0.94,
+    "priority": 18
+  },
+  {
+    "rule_id": "R008",
+    "if_text": "If PigmentationIssue is confirmed",
+    "then_concl": "UseVitaminCSerum",
+    "antecedent_logic": "PigmentationIssue",
+    "cf": 0.91,
+    "priority": 16
+  },
+  {
+    "rule_id": "R009",
+    "if_text": "If sensitive skin AND redness",
+    "then_concl": "SensitiveSkinType",
+    "antecedent_logic": "And(SensitiveSkin, HasRedness)",
+    "cf": 0.87,
+    "priority": 10
+  },
+  {
+    "rule_id": "R010",
+    "if_text": "If SensitiveSkinType is confirmed",
+    "then_concl": "UseCentellaToner",
+    "antecedent_logic": "SensitiveSkinType",
+    "cf": 0.85,
+    "priority": 13
+  },
+  {
+    "rule_id": "R011",
+    "if_text": "If has large pores AND oily T-zone",
+    "then_concl": "EnlargedPoresConcern",
+    "antecedent_logic": "And(HasLargePores, OilyTZone)",
+    "cf": 0.88,
+    "priority": 8
+  },
+  {
+    "rule_id": "R012",
+    "if_text": "If EnlargedPoresConcern is confirmed",
+    "then_concl": "UseNiacinamideSerum",
+    "antecedent_logic": "EnlargedPoresConcern",
+    "cf": 0.86,
+    "priority": 12
+  },
+  {
+    "rule_id": "R013",
+    "if_text": "If has blackheads OR whiteheads",
+    "then_concl": "ComedogenicSkin",
+    "antecedent_logic": "Or(HasBlackheads, HasWhiteheads)",
+    "cf": 0.90,
+    "priority": 9
+  },
+  {
+    "rule_id": "R014",
+    "if_text": "If ComedogenicSkin is confirmed",
+    "antecedent_logic": "ComedogenicSkin",
+    "then_concl": "UseBHAExfoliant",
+    "cf": 0.89,
+    "priority": 14
+  },
+  {
+    "rule_id": "R015",
+    "if_text": "If skin is dehydrated AND NOT oily",
+    "then_concl": "DehydratedSkin",
+    "antecedent_logic": "And(Dehydrated, Not(OilySkin))",
+    "cf": 0.84,
+    "priority": 7
+  },
+  {
+    "rule_id": "R016",
+    "if_text": "If DehydratedSkin is confirmed",
+    "then_concl": "UseGlycerinMoisturizer",
+    "antecedent_logic": "DehydratedSkin",
+    "cf": 0.87,
+    "priority": 11
+  },
+  {
+    "rule_id": "R017",
+    "if_text": "If sun exposure daily AND NOT using SPF",
+    "then_concl": "SunDamageRisk",
+    "antecedent_logic": "And(DailySunExposure, Not(UsesSPF))",
+    "cf": 0.96,
+    "priority": 20
+  },
+  {
+    "rule_id": "R018",
+    "if_text": "If SunDamageRisk is confirmed",
+    "then_concl": "UseBroadSpectrumSPF50",
+    "antecedent_logic": "SunDamageRisk",
+    "cf": 0.98,
+    "priority": 25
+  },
+  {
+    "rule_id": "R019",
+    "if_text": "If has eczema OR dermatitis",
+    "then_concl": "InflammatoryCondition",
+    "antecedent_logic": "Or(HasEczema, HasDermatitis)",
+    "cf": 0.92,
+    "priority": 15
+  },
+  {
+    "rule_id": "R020",
+    "if_text": "If InflammatoryCondition is confirmed",
+    "then_concl": "UseCeramideCream",
+    "antecedent_logic": "InflammatoryCondition",
+    "cf": 0.90,
+    "priority": 17
+  },
+  {
+    "rule_id": "R021",
+    "if_text": "If combination skin AND shiny nose",
+    "then_concl": "CombinationSkinType",
+    "antecedent_logic": "And(CombinationSkin, ShinyNose)",
+    "cf": 0.85,
+    "priority": 8
+  },
+  {
+    "rule_id": "R022",
+    "if_text": "If CombinationSkinType is confirmed",
+    "then_concl": "UseBalancingToner",
+    "antecedent_logic": "CombinationSkinType",
+    "cf": 0.83,
+    "priority": 10
+  },
+  {
+    "rule_id": "R023",
+    "if_text": "If dull skin AND lack of glow",
+    "then_concl": "DullComplexion",
+    "antecedent_logic": "And(DullSkin, LackOfGlow)",
+    "cf": 0.86,
+    "priority": 7
+  },
+  {
+    "rule_id": "R024",
+    "if_text": "If DullComplexion is confirmed",
+    "then_concl": "UseAHAExfoliant",
+    "antecedent_logic": "DullComplexion",
+    "cf": 0.88,
+    "priority": 12
+  },
+  {
+    "rule_id": "R025",
+    "if_text": "If has acne scars AND post-inflammatory marks",
+    "then_concl": "AcneScarring",
+    "antecedent_logic": "And(HasAcneScars, PostInflammatoryMarks)",
+    "cf": 0.91,
+    "priority": 11
+  },
+  {
+    "rule_id": "R026",
+    "if_text": "If AcneScarring is confirmed",
+    "then_concl": "UseAlphaArbutinSerum",
+    "antecedent_logic": "AcneScarring",
+    "cf": 0.87,
+    "priority": 13
+  },
+  {
+    "rule_id": "R027",
+    "if_text": "If rosacea OR facial flushing",
+    "then_concl": "RosaceaConcern",
+    "antecedent_logic": "Or(HasRosacea, FacialFlushing)",
+    "cf": 0.89,
+    "priority": 14
+  },
+  {
+    "rule_id": "R028",
+    "if_text": "If RosaceaConcern is confirmed",
+    "then_concl": "UseAzelaic AcidCream",
+    "antecedent_logic": "RosaceaConcern",
+    "cf": 0.86,
+    "priority": 16
+  },
+  {
+    "rule_id": "R029",
+    "if_text": "If sagging skin AND loss of elasticity",
+    "then_concl": "LossOfFirmness",
+    "antecedent_logic": "And(SaggingSkin, LossOfElasticity)",
+    "cf": 0.90,
+    "priority": 10
+  },
+  {
+    "rule_id": "R030",
+    "if_text": "If LossOfFirmness is confirmed",
+    "then_concl": "UsePeptideSerum",
+    "antecedent_logic": "LossOfFirmness",
+    "cf": 0.88,
+    "priority": 15
+  },
+  {
+    "rule_id": "R031",
+    "if_text": "If under-eye bags AND dark circles",
+    "then_concl": "EyeAreaConcern",
+    "antecedent_logic": "And(UnderEyeBags, DarkCircles)",
+    "cf": 0.84,
+    "priority": 8
+  },
+  {
+    "rule_id": "R032",
+    "if_text": "If EyeAreaConcern is confirmed",
+    "then_concl": "UseCaffeineEyeCream",
+    "antecedent_logic": "EyeAreaConcern",
+    "cf": 0.82,
+    "priority": 11
+  },
+  {
+    "rule_id": "R033",
+    "if_text": "If melasma OR hormonal dark patches",
+    "then_concl": "HormonalPigmentation",
+    "antecedent_logic": "Or(HasMelasma, HormonalDarkPatches)",
+    "cf": 0.92,
+    "priority": 13
+  },
+  {
+    "rule_id": "R034",
+    "if_text": "If HormonalPigmentation is confirmed",
+    "then_concl": "UseKojicAcidSerum",
+    "antecedent_logic": "HormonalPigmentation",
+    "cf": 0.89,
+    "priority": 17
+  },
+  {
+    "rule_id": "R035",
+    "if_text": "If cystic acne AND painful nodules",
+    "then_concl": "SevereAcne",
+    "antecedent_logic": "And(CysticAcne, PainfulNodules)",
+    "cf": 0.94,
+    "priority": 18
+  },
+  {
+    "rule_id": "R036",
+    "if_text": "If SevereAcne is confirmed",
+    "then_concl": "ConsultDermatologist",
+    "antecedent_logic": "SevereAcne",
+    "cf": 0.97,
+    "priority": 22
+  },
+  {
+    "rule_id": "R037",
+    "if_text": "If fine lines AND forehead wrinkles",
+    "then_concl": "EarlyAgingSigns",
+    "antecedent_logic": "And(FineLines, ForeheadWrinkles)",
+    "cf": 0.87,
+    "priority": 9
+  },
+  {
+    "rule_id": "R038",
+    "if_text": "If EarlyAgingSigns is confirmed",
+    "then_concl": "UseBakuchiolSerum",
+    "antecedent_logic": "EarlyAgingSigns",
+    "cf": 0.85,
+    "priority": 12
+  },
+  {
+    "rule_id": "R039",
+    "if_text": "If rough texture AND bumpy skin",
+    "then_concl": "TextureIssues",
+    "antecedent_logic": "And(RoughTexture, BumpySkin)",
+    "cf": 0.83,
+    "priority": 7
+  },
+  {
+    "rule_id": "R040",
+    "if_text": "If TextureIssues is confirmed",
+    "then_concl": "UseEnzymeExfoliant",
+    "antecedent_logic": "TextureIssues",
+    "cf": 0.84,
+    "priority": 10
+  },
+  {
+    "rule_id": "R041",
+    "if_text": "If keratosis pilaris OR chicken skin",
+    "then_concl": "KPCondition",
+    "antecedent_logic": "Or(KeratosisPilaris, ChickenSkin)",
+    "cf": 0.88,
+    "priority": 8
+  },
+  {
+    "rule_id": "R042",
+    "if_text": "If KPCondition is confirmed",
+    "then_concl": "UseUreaLotion",
+    "antecedent_logic": "KPCondition",
+    "cf": 0.86,
+    "priority": 11
+  },
+  {
+    "rule_id": "R043",
+    "if_text": "If oily skin AND NOT using moisturizer",
+    "then_concl": "MoisturizerNeeded",
+    "antecedent_logic": "And(OilySkin, Not(UsesMoisturizer))",
+    "cf": 0.82,
+    "priority": 9
+  },
+  {
+    "rule_id": "R044",
+    "if_text": "If MoisturizerNeeded is confirmed",
+    "then_concl": "UseGelMoisturizer",
+    "antecedent_logic": "MoisturizerNeeded",
+    "cf": 0.85,
+    "priority": 12
+  },
+  {
+    "rule_id": "R045",
+    "if_text": "If seborrheic dermatitis OR flaky scalp",
+    "then_concl": "SeborrheicCondition",
+    "antecedent_logic": "Or(SeborrheicDermatitis, FlakyScalp)",
+    "cf": 0.90,
+    "priority": 12
+  },
+  {
+    "rule_id": "R046",
+    "if_text": "If SeborrheicCondition is confirmed",
+    "then_concl": "UseKetoconazoleShampoo",
+    "antecedent_logic": "SeborrheicCondition",
+    "cf": 0.88,
+    "priority": 15
+  },
+  {
+    "rule_id": "R047",
+    "if_text": "If perioral dermatitis OR mouth area rash",
+    "then_concl": "PerioralDermatitis",
+    "antecedent_logic": "Or(PerioralDermatitis, MouthAreaRash)",
+    "cf": 0.89,
+    "priority": 13
+  },
+  {
+    "rule_id": "R048",
+    "if_text": "If PerioralDermatitis is confirmed",
+    "then_concl": "AvoidFluoridatedToothpaste",
+    "antecedent_logic": "PerioralDermatitis",
+    "cf": 0.85,
+    "priority": 14
+  },
+  {
+    "rule_id": "R049",
+    "if_text": "If milia OR white bumps",
+    "then_concl": "MiliaConcern",
+    "antecedent_logic": "Or(HasMilia, WhiteBumps)",
+    "cf": 0.86,
+    "priority": 7
+  },
+  {
+    "rule_id": "R050",
+    "if_text": "If MiliaConcern is confirmed",
+    "then_concl": "UseGentleRetinol",
+    "antecedent_logic": "MiliaConcern",
+    "cf": 0.83,
+    "priority": 10
+  },
+  {
+    "rule_id": "R051",
+    "if_text": "If contact dermatitis OR allergic reaction",
+    "then_concl": "AllergicSkinReaction",
+    "antecedent_logic": "Or(ContactDermatitis, AllergicReaction)",
+    "cf": 0.91,
+    "priority": 16
+  },
+  {
+    "rule_id": "R052",
+    "if_text": "If AllergicSkinReaction is confirmed",
+    "then_concl": "UseFragranceFreeProducts",
+    "antecedent_logic": "AllergicSkinReaction",
+    "cf": 0.93,
+    "priority": 18
+  },
+  {
+    "rule_id": "R053",
+    "if_text": "If broken capillaries OR spider veins",
+    "then_concl": "VascularIssues",
+    "antecedent_logic": "Or(BrokenCapillaries, SpiderVeins)",
+    "cf": 0.87,
+    "priority": 9
+  },
+  {
+    "rule_id": "R054",
+    "if_text": "If VascularIssues is confirmed",
+    "then_concl": "UseVitaminKCream",
+    "antecedent_logic": "VascularIssues",
+    "cf": 0.84,
+    "priority": 11
+  },
+  {
+    "rule_id": "R055",
+    "if_text": "If nasolabial folds AND marionette lines",
+    "then_concl": "DeepWrinklesConcern",
+    "antecedent_logic": "And(NasolabialFolds, MarionetteLines)",
+    "cf": 0.90,
+    "priority": 11
+  },
+  {
+    "rule_id": "R056",
+    "if_text": "If DeepWrinklesConcern is confirmed",
+    "then_concl": "UseMatrixylPeptides",
+    "antecedent_logic": "DeepWrinklesConcern",
+    "cf": 0.87,
+    "priority": 14
+  },
+  {
+    "rule_id": "R057",
+    "if_text": "If photoaging AND sun spots",
+    "then_concl": "ChronicSunDamage",
+    "antecedent_logic": "And(Photoaging, SunSpots)",
+    "cf": 0.93,
+    "priority": 12
+  },
+  {
+    "rule_id": "R058",
+    "if_text": "If ChronicSunDamage is confirmed",
+    "then_concl": "UseTransexamicAcid",
+    "antecedent_logic": "ChronicSunDamage",
+    "cf": 0.88,
+    "priority": 15
+  },
+  {
+    "rule_id": "R059",
+    "if_text": "If chest acne OR back acne",
+    "then_concl": "BodyAcne",
+    "antecedent_logic": "Or(ChestAcne, BackAcne)",
+    "cf": 0.89,
+    "priority": 8
+  },
+  {
+    "rule_id": "R060",
+    "if_text": "If BodyAcne is confirmed",
+    "then_concl": "UseBenzoylPeroxideBodyWash",
+    "antecedent_logic": "BodyAcne",
+    "cf": 0.87,
+    "priority": 12
+  },
+  {
+    "rule_id": "R061",
+    "if_text": "If stretch marks OR striae",
+    "then_concl": "StretchMarksConcern",
+    "antecedent_logic": "Or(StretchMarks, Striae)",
+    "cf": 0.85,
+    "priority": 6
+  },
+  {
+    "rule_id": "R062",
+    "if_text": "If StretchMarksConcern is confirmed",
+    "then_concl": "UseRetinoidBodyCream",
+    "antecedent_logic": "StretchMarksConcern",
+    "cf": 0.82,
+    "priority": 9
+  },
+  {
+    "rule_id": "R063",
+    "if_text": "If cellulite OR dimpled skin",
+    "then_concl": "CelluliteConcern",
+    "antecedent_logic": "Or(HasCellulite, DimpledSkin)",
+    "cf": 0.83,
+    "priority": 5
+  },
+  {
+    "rule_id": "R064",
+    "if_text": "If CelluliteConcern is confirmed",
+    "then_concl": "UseCaffeineFirmingCream",
+    "antecedent_logic": "CelluliteConcern",
+    "cf": 0.78,
+    "priority": 8
+  },
+  {
+    "rule_id": "R065",
+    "if_text": "If ingrown hairs OR razor bumps",
+    "then_concl": "ShavingIrritation",
+    "antecedent_logic": "Or(IngrownHairs, RazorBumps)",
+    "cf": 0.86,
+    "priority": 7
+  },
+  {
+    "rule_id": "R066",
+    "if_text": "If ShavingIrritation is confirmed",
+    "then_concl": "UseSalicylicAcidToner",
+    "antecedent_logic": "ShavingIrritation",
+    "cf": 0.84,
+    "priority": 10
+  },
+  {
+    "rule_id": "R067",
+    "if_text": "If crow's feet AND smile lines",
+    "then_concl": "ExpressionLines",
+    "antecedent_logic": "And(CrowsFeet, SmileLines)",
+    "cf": 0.88,
+    "priority": 9
+  },
+  {
+    "rule_id": "R068",
+    "if_text": "If ExpressionLines is confirmed",
+    "then_concl": "UseArgirelinePeptide",
+    "antecedent_logic": "ExpressionLines",
+    "cf": 0.85,
+    "priority": 13
+  },
+  {
+    "rule_id": "R069",
+    "if_text": "If neck wrinkles AND décolleté lines",
+    "then_concl": "NeckAgingConcern",
+    "antecedent_logic": "And(NeckWrinkles, DecolletageLines)",
+    "cf": 0.87,
+    "priority": 8
+  },
+  {
+    "rule_id": "R070",
+    "if_text": "If NeckAgingConcern is confirmed",
+    "then_concl": "ExtendRetinolToNeck",
+    "antecedent_logic": "NeckAgingConcern",
+    "cf": 0.86,
+    "priority": 12
+  },
+  {
+    "rule_id": "R071",
+    "if_text": "If age spots AND freckles increase",
+    "then_concl": "LentigineConcern",
+    "antecedent_logic": "And(AgeSpots, FrecklesIncrease)",
+    "cf": 0.89,
+    "priority": 10
+  },
+  {
+    "rule_id": "R072",
+    "if_text": "If LentigineConcern is confirmed",
+    "then_concl": "UseTranexamicAcidSerum",
+    "antecedent_logic": "LentigineConcern",
+    "cf": 0.87,
+    "priority": 13
+  },
+  {
+    "rule_id": "R073",
+    "if_text": "If thin skin AND easily bruised",
+    "then_concl": "FragileSkin",
+    "antecedent_logic": "And(ThinSkin, EasilyBruised)",
+    "cf": 0.84,
+    "priority": 9
+  },
+  {
+    "rule_id": "R074",
+    "if_text": "If FragileSkin is confirmed",
+    "then_concl": "UseCollagenBoostingSerum",
+    "antecedent_logic": "FragileSkin",
+    "cf": 0.82,
+    "priority": 11
+  },
+  {
+    "rule_id": "R075",
+    "if_text": "If uneven skin tone AND blotchiness",
+    "then_concl": "UnevenComplexion",
+    "antecedent_logic": "And(UnevenSkinTone, Blotchiness)",
+    "cf": 0.86,
+    "priority": 8
+  },
+  {
+    "rule_id": "R076",
+    "if_text": "If UnevenComplexion is confirmed",
+    "then_concl": "UseLicoricExtractSerum",
+    "antecedent_logic": "UnevenComplexion",
+    "cf": 0.84,
+    "priority": 11
+  },
+  {
+    "rule_id": "R077",
+    "if_text": "If hormonal acne AND premenstrual breakouts",
+    "then_concl": "HormonalAcne",
+    "antecedent_logic": "And(HormonalAcne, PremenstrualBreakouts)",
+    "cf": 0.92,
+    "priority": 13
+  },
+  {
+    "rule_id": "R078",
+    "if_text": "If HormonalAcne is confirmed",
+    "then_concl": "UseSpironolactone",
+    "antecedent_logic": "HormonalAcne",
+    "cf": 0.88,
+    "priority": 17
+  },
+  {
+    "rule_id": "R079",
+    "if_text": "If fungal acne OR malassezia folliculitis",
+    "then_concl": "FungalAcne",
+    "antecedent_logic": "Or(FungalAcne, MalasseziaFolliculitis)",
+    "cf": 0.90,
+    "priority": 12
+  },
+  {
+    "rule_id": "R080",
+    "if_text": "If FungalAcne is confirmed",
+    "then_concl": "UseKetoconazoleCream",
+    "antecedent_logic": "FungalAcne",
+    "cf": 0.89,
+    "priority": 15
+  },
+  {
+    "rule_id": "R081",
+    "if_text": "If irritation AND burning sensation",
+    "then_concl": "SkinBarrierDamage",
+    "antecedent_logic": "And(HasIrritation, BurningSensation)",
+    "cf": 0.88,
+    "priority": 14
+  },
+  {
+    "rule_id": "R082",
+    "if_text": "If SkinBarrierDamage is confirmed",
+    "then_concl": "UseSqualaneOil",
+    "antecedent_logic": "SkinBarrierDamage",
+    "cf": 0.86,
+    "priority": 16
+  },
+  {
+    "rule_id": "R083",
+    "if_text": "If peeling skin AND flaking",
+    "then_concl": "OverExfoliation",
+    "antecedent_logic": "And(PeelingSkin, Flaking)",
+    "cf": 0.87,
+    "priority": 11
+  },
+  {
+    "rule_id": "R084",
+    "if_text": "If OverExfoliation is confirmed",
+    "then_concl": "StopAllActives",
+    "antecedent_logic": "OverExfoliation",
+    "cf": 0.92,
+    "priority": 18
+  },
+  {
+    "rule_id": "R085",
+    "if_text": "If greasy feel AND shine all day",
+    "then_concl": "ExcessiveSebumProduction",
+    "antecedent_logic": "And(GreasyFeel, ShineAllDay)",
+    "cf": 0.89,
+    "priority": 8
+  },
+  {
+    "rule_id": "R086",
+    "if_text": "If ExcessiveSebumProduction is confirmed",
+    "then_concl": "UseNiacinamideTreatment",
+    "antecedent_logic": "ExcessiveSebumProduction",
+    "cf": 0.87,
+    "priority": 12
+  },
+  {
+    "rule_id": "R087",
+    "if_text": "If closed comedones AND clogged pores",
+    "then_concl": "CloggedPoresConcern",
+    "antecedent_logic": "And(ClosedComedones, CloggedPores)",
+    "cf": 0.88,
+    "priority": 9
+  },
+  {
+    "rule_id": "R088",
+    "if_text": "If CloggedPoresConcern is confirmed",
+    "then_concl": "DoubleCleanseNightly",
+    "antecedent_logic": "CloggedPoresConcern",
+    "cf": 0.85,
+    "priority": 11
+  },
+  {
+    "rule_id": "R089",
+    "if_text": "If sunburn OR UV damage",
+    "then_concl": "AcuteSunDamage",
+    "antecedent_logic": "Or(Sunburn, UVDamage)",
+    "cf": 0.94,
+    "priority": 17
+  },
+  {
+    "rule_id": "R090",
+    "if_text": "If AcuteSunDamage is confirmed",
+    "then_concl": "UseAloeVeraGel",
+    "antecedent_logic": "AcuteSunDamage",
+    "cf": 0.91,
+    "priority": 19
+  },
+  {
+    "rule_id": "R091",
+    "if_text": "If vitiligo OR depigmentation patches",
+    "then_concl": "VitiligoCondition",
+    "antecedent_logic": "Or(HasVitiligo, DepigmentationPatches)",
+    "cf": 0.93,
+    "priority": 15
+  },
+  {
+    "rule_id": "R092",
+    "if_text": "If VitiligoCondition is confirmed",
+    "then_concl": "ConsultDermatologistForTreatment",
+    "antecedent_logic": "VitiligoCondition",
+    "cf": 0.96,
+    "priority": 20
+  },
+  {
+    "rule_id": "R093",
+    "if_text": "If puffy face AND morning swelling",
+    "then_concl": "FacialEdema",
+    "antecedent_logic": "And(PuffyFace, MorningSwelling)",
+    "cf": 0.82,
+    "priority": 7
+  },
+  {
+    "rule_id": "R094",
+    "if_text": "If FacialEdema is confirmed",
+    "then_concl": "UseLymphDrainageMassage",
+    "antecedent_logic": "FacialEdema",
+    "cf": 0.80,
+    "priority": 9
+  },
+  {
+    "rule_id": "R095",
+    "if_text": "If maskne OR mask-related breakouts",
+    "then_concl": "MechanicalAcne",
+    "antecedent_logic": "Or(Maskne, MaskRelatedBreakouts)",
+    "cf": 0.87,
+    "priority": 10
+  },
+  {
+    "rule_id": "R096",
+    "if_text": "If MechanicalAcne is confirmed",
+    "then_concl": "UseLightweightOilFreeMoisturizer",
+    "antecedent_logic": "MechanicalAcne",
+    "cf": 0.85,
+    "priority": 12
+  },
+  {
+    "rule_id": "R097",
+    "if_text": "If atopic dermatitis OR chronic itching",
+    "then_concl": "AtopicDermatitis",
+    "antecedent_logic": "Or(AtopicDermatitis, ChronicItching)",
+    "cf": 0.91,
+    "priority": 14
+  },
+  {
+    "rule_id": "R098",
+    "if_text": "If AtopicDermatitis is confirmed",
+    "then_concl": "UseColloidal OatmealCream",
+    "antecedent_logic": "AtopicDermatitis",
+    "cf": 0.89,
+    "priority": 16
+  },
+  {
+    "rule_id": "R099",
+    "if_text": "If lip dryness OR chapped lips",
+    "then_concl": "Cheilitis",
+    "antecedent_logic": "Or(LipDryness, ChappedLips)",
+    "cf": 0.84,
+    "priority": 6
+  },
+  {
+    "rule_id": "R100",
+    "if_text": "If Cheilitis is confirmed",
+    "then_concl": "UseLanolinLipBalm",
+    "antecedent_logic": "Cheilitis",
+    "cf": 0.83,
+    "priority": 8
+  },
+  {
+    "rule_id": "R101",
+    "if_text": "If psoriasis OR scaly patches",
+    "then_concl": "PsoriasisCondition",
+    "antecedent_logic": "Or(HasPsoriasis, ScalyPatches)",
+    "cf": 0.90,
+    "priority": 13
+  },
+  {
+    "rule_id": "R102",
+    "if_text": "If PsoriasisCondition is confirmed",
+    "then_concl": "UseSalicylicAcidScalpTreatment",
+    "antecedent_logic": "PsoriasisCondition",
+    "cf": 0.87,
+    "priority": 15
+  },
+  {
+    "rule_id": "R103",
+    "if_text": "If fordyce spots OR sebaceous glands visible",
+    "then_concl": "FordyceSpots",
+    "antecedent_logic": "Or(FordyceSpots, SebaceousGlandsVisible)",
+    "cf": 0.82,
+    "priority": 5
+  },
+  {
+    "rule_id": "R104",
+    "if_text": "If FordyceSpots is confirmed",
+    "then_concl": "NoTreatmentNeeded",
+    "antecedent_logic": "FordyceSpots",
+    "cf": 0.95,
+    "priority": 6
+  },
+  {
+    "rule_id": "R105",
+    "if_text": "If cherry angiomas OR red moles",
+    "then_concl": "CherryAngiomas",
+    "antecedent_logic": "Or(CherryAngiomas, RedMoles)",
+    "cf": 0.85,
+    "priority": 7
+  },
+  {
+    "rule_id": "R106",
+    "if_text": "If CherryAngiomas is confirmed",
+    "then_concl": "ConsiderLaserRemoval",
+    "antecedent_logic": "CherryAngiomas",
+    "cf": 0.78,
+    "priority": 9
+  },
+  {
+    "rule_id": "R107",
+    "if_text": "If sebaceous filaments OR nose dots",
+    "then_concl": "SebaceousFilaments",
+    "antecedent_logic": "Or(SebaceousFilaments, NoseDots)",
+    "cf": 0.86,
+    "priority": 7
+  },
+  {
+    "rule_id": "R108",
+    "if_text": "If SebaceousFilaments is confirmed",
+    "then_concl": "UseOilCleansingMethod",
+    "antecedent_logic": "SebaceousFilaments",
+    "cf": 0.84,
+    "priority": 10
+  },
+  {
+    "rule_id": "R109",
+    "if_text": "If thinning eyebrows OR sparse brows",
+    "then_concl": "EyebrowLoss",
+    "antecedent_logic": "Or(ThinningEyebrows, SparseBrows)",
+    "cf": 0.81,
+    "priority": 6
+  },
+  {
+    "rule_id": "R110",
+    "if_text": "If EyebrowLoss is confirmed",
+    "then_concl": "UseCastorOilNightly",
+    "antecedent_logic": "EyebrowLoss",
+    "cf": 0.77,
+    "priority": 8
+  },
+  {
+    "rule_id": "R111",
+    "if_text": "If eyelash loss OR sparse lashes",
+    "then_concl": "EyelashLoss",
+    "antecedent_logic": "Or(EyelashLoss, SparseLashes)",
+    "cf": 0.80,
+    "priority": 6
+  },
+  {
+    "rule_id": "R112",
+    "if_text": "If EyelashLoss is confirmed",
+    "then_concl": "UseProstaglandinSerum",
+    "antecedent_logic": "EyelashLoss",
+    "cf": 0.83,
+    "priority": 9
+  },
+  {
+    "rule_id": "R113",
+    "if_text": "If tinea versicolor OR fungal patches",
+    "then_concl": "TineaVersicolor",
+    "antecedent_logic": "Or(TineaVersicolor, FungalPatches)",
+    "cf": 0.88,
+    "priority": 11
+  },
+  {
+    "rule_id": "R114",
+    "if_text": "If TineaVersicolor is confirmed",
+    "then_concl": "UseSeleniumSulfideShampoo",
+    "antecedent_logic": "TineaVersicolor",
+    "cf": 0.87,
+    "priority": 13
+  },
+  {
+    "rule_id": "R115",
+    "if_text": "If hand eczema OR dry cracked hands",
+    "then_concl": "HandEczema",
+    "antecedent_logic": "Or(HandEczema, DryCrackedHands)",
+    "cf": 0.86,
+    "priority": 9
+  },
+  {
+    "rule_id": "R116",
+    "if_text": "If HandEczema is confirmed",
+    "then_concl": "UseThickHandCream",
+    "antecedent_logic": "HandEczema",
+    "cf": 0.85,
+    "priority": 11
+  },
+  {
+    "rule_id": "R117",
+    "if_text": "If calluses OR rough heels",
+    "then_concl": "FootCalluses",
+    "antecedent_logic": "Or(HasCalluses, RoughHeels)",
+    "cf": 0.84,
+    "priority": 5
+  },
+  {
+    "rule_id": "R118",
+    "if_text": "If FootCalluses is confirmed",
+    "then_concl": "UseFootFileAndUreaCream",
+    "antecedent_logic": "FootCalluses",
+    "cf": 0.82,
+    "priority": 8
+  },
+  {
+    "rule_id": "R119",
+    "if_text": "If dandruff OR scalp flaking",
+    "then_concl": "Dandruff",
+    "antecedent_logic": "Or(HasDandruff, ScalpFlaking)",
+    "cf": 0.88,
+    "priority": 8
+  },
+  {
+    "rule_id": "R120",
+    "if_text": "If Dandruff is confirmed",
+    "then_concl": "UseZincPyrithioneShampoo",
+    "antecedent_logic": "Dandruff",
+    "cf": 0.86,
+    "priority": 11
+  },
+  {
+    "rule_id": "R121",
+    "if_text": "If oily scalp AND hair loss",
+    "then_concl": "SeborrheicAlopecia",
+    "antecedent_logic": "And(OilyScalp, HairLoss)",
+    "cf": 0.83,
+    "priority": 10
+  },
+  {
+    "rule_id": "R122",
+    "if_text": "If SeborrheicAlopecia is confirmed",
+    "then_concl": "UseSalicylicAcidScalpSerum",
+    "antecedent_logic": "SeborrheicAlopecia",
+    "cf": 0.81,
+    "priority": 12
+  },
+  {
+    "rule_id": "R123",
+    "if_text": "If forehead acne AND hairline breakouts",
+    "then_concl": "PomadeAcne",
+    "antecedent_logic": "And(ForeheadAcne, HairlineBreakouts)",
+    "cf": 0.85,
+    "priority": 8
+  },
+  {
+    "rule_id": "R124",
+    "if_text": "If PomadeAcne is confirmed",
+    "then_concl": "SwitchToOilFreeHairProducts",
+    "antecedent_logic": "PomadeAcne",
+    "cf": 0.87,
+    "priority": 10
+  },
+  {
+    "rule_id": "R125",
+    "if_text": "If skin tags OR acrochordons",
+    "then_concl": "SkinTags",
+    "antecedent_logic": "Or(SkinTags, Acrochordons)",
+    "cf": 0.82,
+    "priority": 5
+  },
+  {
+    "rule_id": "R126",
+    "if_text": "If SkinTags is confirmed",
+    "then_concl": "ConsultForRemoval",
+    "antecedent_logic": "SkinTags",
+    "cf": 0.80,
+    "priority": 7
+  },
+  {
+    "rule_id": "R127",
+    "if_text": "If warts OR verrucas",
+    "then_concl": "ViralWarts",
+    "antecedent_logic": "Or(HasWarts, HasVerrucas)",
+    "cf": 0.89,
+    "priority": 10
+  },
+  {
+    "rule_id": "R128",
+    "if_text": "If ViralWarts is confirmed",
+    "then_concl": "UseSalicylicAcidPatch",
+    "antecedent_logic": "ViralWarts",
+    "cf": 0.85,
+    "priority": 12
+  },
+  {
+    "rule_id": "R129",
+    "if_text": "If cold sores OR herpes simplex",
+    "then_concl": "HerpesSimplex",
+    "antecedent_logic": "Or(ColdSores, HerpesSimplex)",
+    "cf": 0.92,
+    "priority": 14
+  },
+  {
+    "rule_id": "R130",
+    "if_text": "If HerpesSimplex is confirmed",
+    "then_concl": "UseAcyclovirCream",
+    "antecedent_logic": "HerpesSimplex",
+    "cf": 0.91,
+    "priority": 17
+  },
+  {
+    "rule_id": "R131",
+    "if_text": "If hives OR urticaria",
+    "then_concl": "Urticaria",
+    "antecedent_logic": "Or(HasHives, Urticaria)",
+    "cf": 0.90,
+    "priority": 13
+  },
+  {
+    "rule_id": "R132",
+    "if_text": "If Urticaria is confirmed",
+    "then_concl": "TakeAntihistamine",
+    "antecedent_logic": "Urticaria",
+    "cf": 0.88,
+    "priority": 16
+  },
+  {
+    "rule_id": "R133",
+    "if_text": "If brittle nails OR nail splitting",
+    "then_concl": "NailHealthIssue",
+    "antecedent_logic": "Or(BrittleNails, NailSplitting)",
+    "cf": 0.81,
+    "priority": 6
+  },
+  {
+    "rule_id": "R134",
+    "if_text": "If NailHealthIssue is confirmed",
+    "then_concl": "UseBiotinSupplement",
+    "antecedent_logic": "NailHealthIssue",
+    "cf": 0.79,
+    "priority": 8
+  },
+  {
+    "rule_id": "R135",
+    "if_text": "If nail fungus OR onychomycosis",
+    "then_concl": "NailFungus",
+    "antecedent_logic": "Or(NailFungus, Onychomycosis)",
+    "cf": 0.87,
+    "priority": 11
+  },
+  {
+    "rule_id": "R136",
+    "if_text": "If NailFungus is confirmed",
+    "then_concl": "UseTopicalAntifungal",
+    "antecedent_logic": "NailFungus",
+    "cf": 0.85,
+    "priority": 13
+  },
+  {
+    "rule_id": "R137",
+    "if_text": "If cuticle damage OR hangnails",
+    "then_concl": "CuticleDamage",
+    "antecedent_logic": "Or(CuticleDamage, Hangnails)",
+    "cf": 0.80,
+    "priority": 5
+  },
+  {
+    "rule_id": "R138",
+    "if_text": "If CuticleDamage is confirmed",
+    "then_concl": "UseCuticleOilDaily",
+    "antecedent_logic": "CuticleDamage",
+    "cf": 0.83,
+    "priority": 7
+  },
+  {
+    "rule_id": "R139",
+    "if_text": "If pregnancy AND skin changes",
+    "then_concl": "PregnancySkinChanges",
+    "antecedent_logic": "And(IsPregnant, SkinChanges)",
+    "cf": 0.86,
+    "priority": 12
+  },
+  {
+    "rule_id": "R140",
+    "if_text": "If PregnancySkinChanges is confirmed",
+    "then_concl": "AvoidRetinoids",
+    "antecedent_logic": "PregnancySkinChanges",
+    "cf": 0.98,
+    "priority": 20
+  },
+  {
+    "rule_id": "R141",
+    "if_text": "If menopause AND hot flashes",
+    "then_concl": "MenopausalSkin",
+    "antecedent_logic": "And(InMenopause, HotFlashes)",
+    "cf": 0.88,
+    "priority": 10
+  },
+  {
+    "rule_id": "R142",
+    "if_text": "If MenopausalSkin is confirmed",
+    "then_concl": "UsePhytoestrogenserum",
+    "antecedent_logic": "MenopausalSkin",
+    "cf": 0.82,
+    "priority": 12
+  },
+  {
+    "rule_id": "R143",
+    "if_text": "If smoking habit AND premature aging",
+    "then_concl": "SmokingRelatedDamage",
+    "antecedent_logic": "And(SmokingHabit, PrematureAging)",
+    "cf": 0.91,
+    "priority": 13
+  },
+  {
+    "rule_id": "R144",
+    "if_text": "If SmokingRelatedDamage is confirmed",
+    "then_concl": "UseAntioxidantSerums",
+    "antecedent_logic": "SmokingRelatedDamage",
+    "cf": 0.87,
+    "priority": 15
+  },
+  {
+    "rule_id": "R145",
+    "if_text": "If pollution exposure AND urban environment",
+    "then_concl": "PollutionDamage",
+    "antecedent_logic": "And(PollutionExposure, UrbanEnvironment)",
+    "cf": 0.84,
+    "priority": 9
+  },
+  {
+    "rule_id":"R146",
+    "if_text": "If PollutionDamage is confirmed",
+    "then_concl": "UseAntioxidantCleanser",
+    "antecedent_logic": "PollutionDamage",
+    "cf": 0.85,
+    "priority": 11
+  },
+  {
+    "rule_id": "R147",
+    "if_text": "If blue light exposure AND screen time high",
+    "then_concl": "DigitalAging",
+    "antecedent_logic": "And(BlueLightExposure, HighScreenTime)",
+    "cf": 0.79,
+    "priority": 7
+  },
+  {
+    "rule_id": "R148",
+    "if_text": "If DigitalAging is confirmed",
+    "then_concl": "UseIronOxideSunscreen",
+    "antecedent_logic": "DigitalAging",
+    "cf": 0.76,
+    "priority": 9
+  },
+  {
+    "rule_id": "R149",
+    "if_text": "If stress AND cortisol effects",
+    "then_concl": "StressRelatedSkinIssues",
+    "antecedent_logic": "And(HighStress, CortisolEffects)",
+    "cf": 0.83,
+    "priority": 8
+  },
+  {
+    "rule_id": "R150",
+    "then_concl": "UseAdaptogenicSkincare",
+    "if_text": "If StressRelatedSkinIssues is confirmed",
+    "antecedent_logic": "StressRelatedSkinIssues",
+    "cf": 0.80,
+    "priority": 10
+  },
+  {
+    "rule_id": "R151",
+    "if_text": "If poor sleep AND tired appearance",
+    "then_concl": "SleepDeprivationSkin",
+    "antecedent_logic": "And(PoorSleep, TiredAppearance)",
+    "cf": 0.85,
+    "priority": 8
+  },
+  {
+    "rule_id": "R152",
+    "if_text": "If SleepDeprivationSkin is confirmed",
+    "then_concl": "UseEyeMask",
+    "antecedent_logic": "SleepDeprivationSkin",
+    "cf": 0.82,
+    "priority": 10
+  },
+  {
+    "rule_id": "R153",
+    "if_text": "If poor diet AND nutritional deficiency",
+    "then_concl": "NutritionalSkinIssues",
+    "antecedent_logic": "And(PoorDiet, NutritionalDeficiency)",
+    "cf": 0.86,
+    "priority": 9
+  },
+  {
+    "rule_id": "R154",
+    "if_text": "If NutritionalSkinIssues is confirmed",
+    "then_concl": "TakeOmega3Supplements",
+    "antecedent_logic": "NutritionalSkinIssues",
+    "cf": 0.83,
+    "priority": 11
+  },
+  {
+    "rule_id": "R155",
+    "if_text": "If dehydration AND low water intake",
+    "then_concl": "SystemicDehydration",
+    "antecedent_logic": "And(Dehydration, LowWaterIntake)",
+    "cf": 0.88,
+    "priority": 10
+  },
+  {
+    "rule_id": "R156",
+    "if_text": "If SystemicDehydration is confirmed",
+    "then_concl": "IncreaseWaterIntake",
+    "antecedent_logic": "SystemicDehydration",
+    "cf": 0.92,
+    "priority": 12
+  },
+  {
+    "rule_id": "R157",
+    "if_text": "If high sugar diet AND glycation",
+    "then_concl": "GlycationDamage",
+    "antecedent_logic": "And(HighSugarDiet, Glycation)",
+    "cf": 0.84,
+    "priority": 8
+  },
+  {
+    "rule_id": "R158",
+    "if_text": "If GlycationDamage is confirmed",
+    "then_concl": "UseCarnosineSerum",
+    "antecedent_logic": "GlycationDamage",
+    "cf": 0.81,
+    "priority": 10
+  },
+  {
+    "rule_id": "R159",
+    "if_text": "If excessive alcohol AND facial redness",
+    "then_concl": "AlcoholRelatedRosacea",
+    "antecedent_logic": "And(ExcessiveAlcohol, FacialRedness)",
+    "cf": 0.87,
+    "priority": 11
+  },
+  {
+    "rule_id": "R160",
+    "if_text": "If AlcoholRelatedRosacea is confirmed",
+    "then_concl": "ReduceAlcoholIntake",
+    "antecedent_logic": "AlcoholRelatedRosacea",
+    "cf": 0.90,
+    "priority": 14
+  },
+  {
+    "rule_id": "R161",
+    "if_text": "If gym acne AND sweaty workouts",
+    "then_concl": "ExerciseInducedAcne",
+    "antecedent_logic": "And(GymAcne, SweatyWorkouts)",
+    "cf": 0.86,
+    "priority": 9
+  },
+  {
+    "rule_id": "R162",
+    "if_text": "If ExerciseInducedAcne is confirmed",
+    "then_concl": "ShowerImmediatelyAfterWorkout",
+    "antecedent_logic": "ExerciseInducedAcne",
+    "cf": 0.89,
+    "priority": 11
+  },
+  {
+    "rule_id": "R163",
+    "if_text": "If chlorine exposure AND swimming",
+    "then_concl": "ChlorineDamage",
+    "antecedent_logic": "And(ChlorineExposure, RegularSwimming)",
+    "cf": 0.83,
+    "priority": 7
+  },
+  {
+    "rule_id": "R164",
+    "if_text": "If ChlorineDamage is confirmed",
+    "then_concl": "UseBarrierCreamBeforeSwim",
+    "antecedent_logic": "ChlorineDamage",
+    "cf": 0.85,
+    "priority": 9
+  },
+  {
+    "rule_id": "R165",
+    "if_text": "If hard water AND mineral buildup",
+    "then_concl": "HardWaterEffects",
+    "antecedent_logic": "And(HardWater, MineralBuildup)",
+    "cf": 0.81,
+    "priority": 6
+  },
+  {
+    "rule_id": "R166",
+    "if_text": "If HardWaterEffects is confirmed",
+    "then_concl": "UseMicellarWater",
+    "antecedent_logic": "HardWaterEffects",
+    "cf": 0.84,
+    "priority": 8
+  },
+  {
+    "rule_id": "R167",
+    "if_text": "If travel frequently AND climate changes",
+    "then_concl": "TravelSkinStress",
+    "antecedent_logic": "And(FrequentTravel, ClimateChanges)",
+    "cf": 0.79,
+    "priority": 6
+  },
+  {
+    "rule_id": "R168",
+    "if_text": "If TravelSkinStress is confirmed",
+    "then_concl": "CarryTravelSkincareminiset",
+    "antecedent_logic": "TravelSkinStress",
+    "cf": 0.82,
+    "priority": 8
+  },
+  {
+    "rule_id": "R169",
+    "if_text": "If winter AND cold weather",
+    "then_concl": "WinterDryness",
+    "antecedent_logic": "And(WinterSeason, ColdWeather)",
+    "cf": 0.87,
+    "priority": 9
+  },
+  {
+    "rule_id": "R170",
+    "if_text": "If WinterDryness is confirmed",
+    "then_concl": "UseHeavierMoisturizer",
+    "antecedent_logic": "WinterDryness",
+    "cf": 0.88,
+    "priority": 11
+  },
+  {
+    "rule_id": "R171",
+    "if_text": "If summer AND high humidity",
+    "then_concl": "SummerOiliness",
+    "antecedent_logic": "And(SummerSeason, HighHumidity)",
+    "cf": 0.84,
+    "priority": 8
+  },
+  {
+    "rule_id": "R172",
+    "if_text": "If SummerOiliness is confirmed",
+    "then_concl": "SwitchToLighterTextures",
+    "antecedent_logic": "SummerOiliness",
+    "cf": 0.86,
+    "priority": 10
+  },
+  {
+    "rule_id": "R173",
+    "if_text": "If air conditioning AND indoor dryness",
+    "then_concl": "ACDryness",
+    "antecedent_logic": "And(AirConditioning, IndoorDryness)",
+    "cf": 0.82,
+    "priority": 7
+  },
+  {
+    "rule_id": "R174",
+    "if_text": "If ACDryness is confirmed",
+    "then_concl": "UseFacialMist",
+    "antecedent_logic": "ACDryness",
+    "cf": 0.80,
+    "priority": 9
+  },
+  {
+    "rule_id": "R175",
+    "if_text": "If makeup daily AND clogged pores",
+    "then_concl": "MakeupRelatedIssues",
+    "antecedent_logic": "And(DailyMakeup, CloggedPores)",
+    "cf": 0.85,
+    "priority": 8
+  },
+  {
+    "rule_id": "R176",
+    "if_text": "If MakeupRelatedIssues is confirmed",
+    "then_concl": "UseOilCleanserFirst",
+    "antecedent_logic": "MakeupRelatedIssues",
+    "cf": 0.88,
+    "priority": 11
+  },
+  {
+    "rule_id": "R177",
+    "if_text": "If dirty makeup brushes AND breakouts",
+    "then_concl": "BacterialContamination",
+    "antecedent_logic": "And(DirtyMakeupBrushes, Breakouts)",
+    "cf": 0.89,
+    "priority": 10
+  },
+  {
+    "rule_id": "R178",
+    "if_text": "If BacterialContamination is confirmed",
+    "then_concl": "CleanBrushesWeekly",
+    "antecedent_logic": "BacterialContamination",
+    "cf": 0.91,
+    "priority": 13
+  },
+  {
+    "rule_id": "R179",
+    "if_text": "If expired products AND skin irritation",
+    "then_concl": "ProductExpiration",
+    "antecedent_logic": "And(ExpiredProducts, SkinIrritation)",
+    "cf": 0.87,
+    "priority": 11
+  },
+  {
+    "rule_id": "R180",
+    "if_text": "If ProductExpiration is confirmed",
+    "then_concl": "DiscardOldProducts",
+    "antecedent_logic": "ProductExpiration",
+    "cf": 0.93,
+    "priority": 14
+  },
+  {
+    "rule_id": "R181",
+    "if_text": "If over-washing face AND stripped feeling",
+    "then_concl": "OverCleansing",
+    "antecedent_logic": "And(OverWashingFace, StrippedFeeling)",
+    "cf": 0.86,
+    "priority": 9
+  },
+  {
+    "rule_id": "R182",
+    "if_text": "If OverCleansing is confirmed",
+    "then_concl": "ReduceToTwiceDaily",
+    "antecedent_logic": "OverCleansing",
+    "cf": 0.88,
+    "priority": 11
+  },
+  {
+    "rule_id": "R183",
+    "if_text": "If touching face frequently AND breakouts",
+    "then_concl": "BacterialTransfer",
+    "antecedent_logic": "And(TouchingFaceFrequently, Breakouts)",
+    "cf": 0.84,
+    "priority": 8
+  },
+  {
+    "rule_id": "R184",
+    "if_text": "If BacterialTransfer is confirmed",
+    "then_concl": "KeepHandsAwayFromFace",
+    "antecedent_logic": "BacterialTransfer",
+    "cf": 0.87,
+    "priority": 10
+  },
+  {
+    "rule_id": "R185",
+    "if_text": "If dirty pillowcase AND cheek acne",
+    "then_concl": "PillowcaseAcne",
+    "antecedent_logic": "And(DirtyPillowcase, CheekAcne)",
+    "cf": 0.88,
+    "priority": 9
+  },
+  {
+    "rule_id": "R186",
+    "if_text": "If PillowcaseAcne is confirmed",
+    "then_concl": "ChangePillowcaseTwiceWeekly",
+    "antecedent_logic": "PillowcaseAcne",
+    "cf": 0.90,
+    "priority": 12
+  },
+  {
+    "rule_id": "R187",
+    "if_text": "If cell phone use AND jaw acne",
+    "then_concl": "PhoneContamination",
+    "antecedent_logic": "And(FrequentPhoneUse, JawAcne)",
+    "cf": 0.83,
+    "priority": 7
+  },
+  {
+    "rule_id": "R188",
+    "if_text": "If PhoneContamination is confirmed",
+    "then_concl": "DisinfectPhoneDaily",
+    "antecedent_logic": "PhoneContamination",
+    "cf": 0.85,
+    "priority": 9
+  },
+  {
+    "rule_id": "R189",
+    "if_text": "If picking at skin AND scarring",
+    "then_concl": "Dermatillomania",
+    "antecedent_logic": "And(PickingAtSkin, Scarring)",
+    "cf": 0.89,
+    "priority": 12
+  },
+  {
+    "rule_id": "R190",
+    "if_text": "If Dermatillomania is confirmed",
+    "then_concl": "ConsiderTherapy",
+    "antecedent_logic": "Dermatillomania",
+    "cf": 0.86,
+    "priority": 15
+  },
+  {
+    "rule_id": "R191",
+    "if_text": "If new product AND sudden reaction",
+    "then_concl": "ProductReaction",
+    "antecedent_logic": "And(NewProduct, SuddenReaction)",
+    "cf": 0.91,
+    "priority": 13
+  },
+  {
+    "rule_id": "R192",
+    "if_text": "If ProductReaction is confirmed",
+    "then_concl": "StopProductImmediately",
+    "antecedent_logic": "ProductReaction",
+    "cf": 0.95,
+    "priority": 17
+  },
+  {
+    "rule_id": "R193",
+    "if_text": "If mixing actives AND irritation",
+    "then_concl": "ActiveOverload",
+    "antecedent_logic": "And(MixingActives, Irritation)",
+    "cf": 0.87,
+    "priority": 10
+  },
+  {
+    "rule_id": "R194",
+    "if_text": "If ActiveOverload is confirmed",
+    "then_concl": "SimplifyRoutine",
+    "antecedent_logic": "ActiveOverload",
+    "cf": 0.89,
+    "priority": 13
+  },
+  {
+    "rule_id": "R195",
+    "if_text": "If retinol AND vitamin C together",
+    "then_concl": "IncompatibleActives",
+    "antecedent_logic": "And(UsingRetinol, UsingVitaminC)",
+    "cf": 0.82,
+    "priority": 8
+  },
+  {
+    "rule_id": "R196",
+    "if_text": "If IncompatibleActives is confirmed",
+    "then_concl": "SeparateMorningEvening",
+    "antecedent_logic": "IncompatibleActives",
+    "cf": 0.85,
+    "priority": 11
+  },
+  {
+    "rule_id": "R197",
+    "if_text": "If purging phase AND starting retinoid",
+    "then_concl": "RetinoidPurge",
+    "antecedent_logic": "And(PurgingPhase, StartingRetinoid)",
+    "cf": 0.86,
+    "priority": 9
+  },
+  {
+    "rule_id": "R198",
+    "if_text": "If RetinoidPurge is confirmed",
+    "then_concl": "ContinueForSixWeeks",
+    "antecedent_logic": "RetinoidPurge",
+    "cf": 0.83,
+    "priority": 11
+  },
+  {
+    "rule_id": "R199",
+    "if_text": "If pH imbalance AND compromised barrier",
+    "then_concl": "pHImbalance",
+    "antecedent_logic": "And(pHImbalance, CompromisedBarrier)",
+    "cf": 0.84,
+    "priority": 9
+  },
+    {
+      "rule_id": "R200",
+      "if_text": "If pHImbalance is confirmed",
+      "then_concl": "UsepHBalancedCleanser",
+      "antecedent_logic": "pHImbalance",
+      "cf": 0.87,
+      "priority": 12
+    }
+  ]

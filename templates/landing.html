@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Expert System - Select Your Goal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.85;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .goal-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .goal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .goal-card:hover::before {
+            left: 100%;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: #667eea;
+        }
+
+        .card-icon {
+            display: none;
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .card-description {
+            color: #6c757d;
+            font-size: 1.05em;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .card-goals {
+            display: none;
+        }
+
+        .goal-item {
+            display: none;
+        }
+
+        .card-action {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .footer p {
+            font-size: 0.95em;
+            margin: 5px 0;
+        }
+
+        .back-to-analysis {
+            text-align: center;
+            margin-top: 30px;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .back-to-analysis a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.05em;
+            padding: 12px 25px;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-to-analysis a:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .section-divider {
+            text-align: center;
+            color: white;
+            margin: 50px 0 30px 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .quick-analysis {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            text-align: center;
+            animation: fadeInUp 1.6s ease-out;
+        }
+
+        .quick-analysis h2 {
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .quick-analysis p {
+            margin-bottom: 20px;
+            opacity: 0.95;
+            font-size: 1.05em;
+        }
+
+        .quick-analysis a {
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .quick-analysis a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Skincare Expert System</h1>
+            <p>Choose Your Skin Concern</p>
+            <p class="subtitle">Select a treatment goal to receive personalized skincare recommendations</p>
+        </div>
+
+        <!-- Goal Cards -->
+        <div class="cards-grid" id="goalsGrid">
+            <!-- Cards will be populated by JavaScript -->
+        </div>
+
+        <!-- Alternative: Full Analysis -->
+        <div class="section-divider">or</div>
+
+        <div class="quick-analysis">
+            <h2>Full Analysis Mode</h2>
+            <p>View all symptoms and let the expert system analyze all your skin conditions</p>
+            <a href="/analysis">Start Full Analysis</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Powered by AI-driven expert system with MYCIN-style certainty factors</p>
+            <p>Consult a dermatologist for professional medical advice</p>
+        </div>
+    </div>
+
+    <script>
+        // Goal card definitions with descriptions and icons
+        const goalCategories = [
+            {
+                title: "Acne & Blemishes",
+                icon: "🎯",
+                description: "Treat acne, blackheads, whiteheads, and breakouts",
+                goals: ["UseSalicylicAcidCleanser", "UseBHAExfoliant", "UseAHAExfoliant", "UseBenzoylPeroxideBodyWash", "ConsultDermatologist"],
+                color: "#FF6B6B"
+            },
+            {
+                title: "Anti-Aging & Wrinkles",
+                icon: "✨",
+                description: "Reduce fine lines, wrinkles, and signs of aging",
+                goals: ["UseRetinolTreatment", "UsePeptideSerum", "ExtendRetinolToNeck", "UseArgirelinePeptide", "UseBakuchiolSerum"],
+                color: "#4ECDC4"
+            },
+            {
+                title: "Dark Spots & Pigmentation",
+                icon: "🌟",
+                description: "Fade hyperpigmentation, melasma, and dark spots",
+                goals: ["UseVitaminCSerum", "UseAlphaArbutinSerum", "UseKojicAcidSerum", "UseTranexamicAcidSerum", "UseTransexamicAcid"],
+                color: "#FFE66D"
+            },
+            {
+                title: "Hydration & Moisture",
+                icon: "💧",
+                description: "Hydrate dry skin and restore moisture barrier",
+                goals: ["UseHyaluronicAcidSerum", "UseCeramideCream", "UseGlycerinMoisturizer", "UseHeavierMoisturizer"],
+                color: "#95E1D3"
+            },
+            {
+                title: "Redness & Sensitivity",
+                icon: "🛡️",
+                description: "Calm irritation, redness, and sensitive skin",
+                goals: ["UseCentellaToner", "UseAzelaic AcidCream", "UseSqualaneOil"],
+                color: "#F38181"
+            },
+            {
+                title: "Pores & Texture",
+                icon: "🔬",
+                description: "Minimize pores, refine texture, and smooth skin",
+                goals: ["UseNiacinamideSerum", "UseLicoricExtractSerum", "UseEnzymeExfoliant"],
+                color: "#A8D8EA"
+            },
+            {
+                title: "Eye Care",
+                icon: "👁️",
+                description: "Treat dark circles, puffiness, and under-eye bags",
+                goals: ["UseCaffeineEyeCream"],
+                color: "#FFB7B2"
+            },
+            {
+                title: "Sun Protection",
+                icon: "☀️",
+                description: "Protect skin from UV damage and photoaging",
+                goals: ["UseBroadSpectrumSPF50"],
+                color: "#FFA07A"
+            }
+        ];
+
+        function formatGoalName(goal) {
+            // Format: "UseRetinolTreatment" -> "Retinol Treatment"
+            return goal.replace(/^Use|^Consult|^Take|^Avoid|^Stop|^Reduce|^Increase|^Switch|^Extend|^Consider|^Change|^Keep|^No/g, '')
+                       .replace(/([A-Z])/g, ' $1')
+                       .trim();
+        }
+
+        function renderGoalCards() {
+            const grid = document.getElementById('goalsGrid');
+            grid.innerHTML = '';
+
+            goalCategories.forEach((category, index) => {
+                const card = document.createElement('div');
+                card.className = 'goal-card';
+                card.style.animation = `fadeInUp 0.8s ease-out ${0.1 * index}s backwards`;
+                card.onclick = () => selectGoal(category.title);
+
+                card.innerHTML = `
+                    <h3 class="card-title">${category.title}</h3>
+                    <p class="card-description">${category.description}</p>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function selectGoal(categoryTitle) {
+            // Store selected goal in session storage
+            sessionStorage.setItem('selectedGoal', categoryTitle);
+            // Navigate to goal-specific symptoms page
+            window.location.href = `/goal-symptoms?goal=${encodeURIComponent(categoryTitle)}`;
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            renderGoalCards();
+        });
+    </script>
+</body>
+</html>

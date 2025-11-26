@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Expert System - Symptom Input</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+
+        .goal-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 1em;
+            border: 2px solid rgba(255,255,255,0.4);
+            margin-top: 10px;
+        }
+
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            font-size: 0.95em;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-height: 800px;
+            overflow-y: auto;
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+        }
+
+        .symptom-category {
+            margin-bottom: 25px;
+        }
+
+        .symptom-category h3 {
+            color: #495057;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #dee2e6;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .symptom-category h3:hover {
+            color: #667eea;
+        }
+
+        .symptom-list {
+            display: none;
+        }
+
+        .symptom-list.active {
+            display: block;
+        }
+
+        .symptom-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .symptom-item:hover {
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+            transform: translateX(2px);
+        }
+
+        .symptom-item label {
+            flex: 1;
+            cursor: pointer;
+            font-size: 0.95em;
+            color: #495057;
+        }
+
+        .symptom-item input[type="range"] {
+            flex: 1.5;
+            height: 6px;
+            border-radius: 5px;
+            background: #dee2e6;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .symptom-item input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .symptom-item input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .symptom-item .cf-value {
+            min-width: 45px;
+            text-align: center;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.95em;
+        }
+
+        .controls {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid #dee2e6;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.95em;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-back {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            margin-bottom: 15px;
+        }
+
+        .btn-back:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .results-section {
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .result-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .result-item:hover {
+            background: #e9ecef;
+            transform: translateX(3px);
+        }
+
+        .result-item-name {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .result-item-cf {
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .goal-result {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .goal-result h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .goal-result .cf-display {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .badge-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .badge-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .badge-info {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .rule-explanation {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #e9ecef;
+        }
+
+        .rule-explanation h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .rule-explanation p {
+            margin: 5px 0;
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s;
+        }
+
+        .expand-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .quick-preset {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .preset-btn {
+            padding: 8px 12px;
+            background: white;
+            border: 1px solid #dee2e6;
+            color: #495057;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.3s;
+        }
+
+        .preset-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Skincare Expert System</h1>
+            <p>Personalized Analysis for Your Skin</p>
+            <div class="goal-badge" id="goalBadge">Loading...</div>
+        </div>
+
+        <div class="breadcrumb">
+            <a onclick="goBack()">Back to Goals</a> / <span id="goalName">Goal Symptoms</span>
+        </div>
+
+        <div class="main-content">
+            <!-- Left Panel: Input -->
+            <div class="card">
+                <h2>Your Symptoms</h2>
+                
+                <div class="quick-preset">
+                    <button class="preset-btn" onclick="resetForm()">Clear All</button>
+                </div>
+
+                <div id="symptoms-container"></div>
+
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="threshold">Certainty Threshold: <span id="thresholdValue">0.30</span></label>
+                        <input type="range" id="threshold" min="0" max="1" step="0.05" value="0.3" 
+                               oninput="document.getElementById('thresholdValue').textContent = parseFloat(this.value).toFixed(2)">
+                    </div>
+
+                    <button class="btn btn-primary" onclick="runDiagnosis()">
+                        Analyze & Get Recommendations
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetForm()">
+                        Clear Symptoms
+                    </button>
+                    <button class="btn btn-back" onclick="goBack()">
+                        Back to Goals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Panel: Results -->
+            <div class="card">
+                <h2>Results</h2>
+                <div id="results-container">
+                    <div class="empty-state">
+                        <h3>No Analysis Yet</h3>
+                        <p>Select your symptoms and click "Analyze & Get Recommendations"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let symptomsData = {};
+        let currentGoal = '';
+        const goalToSymptomMap = {
+            'Acne & Blemishes': ['HasAcne', 'HasBlackheads', 'HasWhiteheads', 'CysticAcne', 'HormonalAcne', 'FungalAcne', 'OilySkin', 'CombinationSkin', 'DailySunExposure', 'UsesSPF'],
+            'Anti-Aging & Wrinkles': ['HasWrinkles', 'FineLines', 'CrowsFeet', 'NasolabialFolds', 'AgeOver40', 'SaggingSkin', 'LossOfElasticity', 'DailyS unExposure', 'SmokingHabit', 'HighStress'],
+            'Dark Spots & Pigmentation': ['HasDarkSpots', 'HasHyperpigmentation', 'HasMelasma', 'SunSpots', 'AgeSpots', 'UnevenSkinTone', 'FrecklesIncrease', 'DailySunExposure', 'Photoaging'],
+            'Hydration & Moisture': ['DrySkin', 'SkinFeelsTight', 'Flaking', 'PeelingSkin', 'Dehydrated', 'DullSkin', 'LackOfGlow', 'AirConditioning'],
+            'Redness & Sensitivity': ['HasRedness', 'FacialFlushing', 'HasRosacea', 'HasIrritation', 'BurningSensation', 'AllergicReaction', 'SensitiveSkin', 'HighStress'],
+            'Pores & Texture': ['HasLargePores', 'RoughTexture', 'BumpySkin', 'OilyTZone', 'ClosedComedones', 'CloggedPores', 'DullSkin', 'OilySkin'],
+            'Eye Care': ['UnderEyeBags', 'DarkCircles', 'CrowsFeet', 'PuffyFace', 'MorningSwelling', 'PoorSleep', 'HighStress'],
+            'Sun Protection': ['DailySunExposure', 'UsesSPF', 'Sunburn', 'UVDamage', 'Photoaging', 'UrbanEnvironment', 'BlueLightExposure']
+        };
+
+        async function loadSymptoms() {
+            const response = await fetch('/api/symptoms');
+            const allSymptoms = await response.json();
+            
+            // Get current goal from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            currentGoal = urlParams.get('goal') || 'Acne & Blemishes';
+            
+            document.getElementById('goalBadge').textContent = currentGoal;
+            document.getElementById('goalName').textContent = currentGoal;
+            
+            // Filter symptoms relevant to the goal
+            const relevantSymptoms = goalToSymptomMap[currentGoal] || [];
+            symptomsData = {};
+            
+            for (const [category, symptoms] of Object.entries(allSymptoms)) {
+                symptomsData[category] = symptoms.filter(s => relevantSymptoms.includes(s));
+            }
+            
+            // Remove empty categories
+            Object.keys(symptomsData).forEach(key => {
+                if (symptomsData[key].length === 0) delete symptomsData[key];
+            });
+            
+            renderSymptoms();
+        }
+
+        function renderSymptoms() {
+            const container = document.getElementById('symptoms-container');
+            container.innerHTML = '';
+
+            for (const [category, symptoms] of Object.entries(symptomsData)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'symptom-category';
+                
+                const header = document.createElement('h3');
+                header.innerHTML = `${category} <span class="expand-icon">▼</span>`;
+                header.onclick = function() {
+                    const list = this.nextElementSibling;
+                    list.classList.toggle('active');
+                    this.querySelector('.expand-icon').classList.toggle('rotated');
+                };
+                
+                const symptomList = document.createElement('div');
+                symptomList.className = 'symptom-list active';
+                
+                symptoms.forEach(symptom => {
+                    const item = document.createElement('div');
+                    item.className = 'symptom-item';
+                    item.innerHTML = `
+                        <label for="${symptom}">${formatSymptomName(symptom)}</label>
+                        <input type="range" id="${symptom}" min="0" max="1" step="0.05" value="0"
+                               oninput="updateCF('${symptom}', this.value)">
+                        <span class="cf-value" id="${symptom}-value">0.00</span>
+                    `;
+                    symptomList.appendChild(item);
+                });
+                
+                categoryDiv.appendChild(header);
+                categoryDiv.appendChild(symptomList);
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        function formatSymptomName(name) {
+            return name.replace(/([A-Z])/g, ' $1').trim();
+        }
+
+        function updateCF(symptom, value) {
+            document.getElementById(`${symptom}-value`).textContent = parseFloat(value).toFixed(2);
+        }
+
+        async function runDiagnosis() {
+            const resultsContainer = document.getElementById('results-container');
+            resultsContainer.innerHTML = '<div class="loading"><div class="loading-spinner"></div><p>Analyzing...</p></div>';
+
+            // Collect symptoms
+            const symptoms = {};
+            for (const symptoms_list of Object.values(symptomsData)) {
+                for (const symptom of symptoms_list) {
+                    const value = parseFloat(document.getElementById(symptom).value);
+                    if (value > 0) {
+                        symptoms[symptom] = value;
+                    }
+                }
+            }
+
+            const threshold = parseFloat(document.getElementById('threshold').value);
+
+            const payload = {
+                symptoms: symptoms,
+                method: 'forward',
+                threshold: threshold
+            };
+
+            try {
+                const response = await fetch('/api/diagnose', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                displayResults(result);
+            } catch (error) {
+                resultsContainer.innerHTML = `<div class="result-card"><h3>Error</h3><p>${error.message}</p></div>`;
+            }
+        }
+
+        function displayResults(result) {
+            const container = document.getElementById('results-container');
+            let html = '';
+
+            if (Object.keys(result.conditions).length > 0) {
+                html += '<div class="result-card"><h3>Your Skin Conditions</h3>';
+                for (const [condition, cf] of Object.entries(result.conditions)) {
+                    html += `
+                        <div class="result-item">
+                            <span class="result-item-name">${formatSymptomName(condition)}</span>
+                            <span class="result-item-cf">${(cf * 100).toFixed(1)}%</span>
+                        </div>
+                    `;
+                }
+                html += '</div>';
+            }
+
+            if (Object.keys(result.recommendations).length > 0) {
+                html += '<div class="result-card"><h3>Recommended Treatments</h3>';
+                for (const [treatment, cf] of Object.entries(result.recommendations)) {
+                    html += `
+                        <div class="result-item">
+                            <span class="result-item-name">${formatSymptomName(treatment)}</span>
+                            <span class="result-item-cf">${(cf * 100).toFixed(1)}%</span>
+                        </div>
+                    `;
+                }
+                html += '</div>';
+            }
+
+            if (result.fired_rules && result.fired_rules.length > 0) {
+                html += `<div class="result-card"><h3>How We Got Here (${result.fired_rules.length} rules)</h3>`;
+                result.fired_rules.slice(0, 8).forEach((rule) => {
+                    html += `
+                        <div class="rule-explanation">
+                            <h4>${rule.rule_id}</h4>
+                            <p><strong>IF:</strong> ${rule.if_text}</p>
+                            <p><strong>THEN:</strong> ${rule.conclusion}</p>
+                        </div>
+                    `;
+                });
+                if (result.fired_rules.length > 8) {
+                    html += `<p style="text-align: center; color: #6c757d; margin-top: 15px;">+ ${result.fired_rules.length - 8} more inferences</p>`;
+                }
+                html += '</div>';
+            }
+
+            if (html === '') {
+                html = '<div class="empty-state"><h3>No Results</h3><p>No conditions detected above threshold. Try adjusting symptoms.</p></div>';
+            }
+
+            container.innerHTML = html;
+        }
+
+        function resetForm() {
+            for (const symptoms_list of Object.values(symptomsData)) {
+                for (const symptom of symptoms_list) {
+                    document.getElementById(symptom).value = 0;
+                    updateCF(symptom, 0);
+                }
+            }
+            document.getElementById('results-container').innerHTML = `
+                <div class="empty-state">
+                    <h3>No Analysis Yet</h3>
+                    <p>Select your symptoms and click "Analyze & Get Recommendations"</p>
+                </div>
+            `;
+        }
+
+        function goBack() {
+            window.location.href = '/';
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            loadSymptoms();
+        });
+    </script>
+</body>
+</html>
