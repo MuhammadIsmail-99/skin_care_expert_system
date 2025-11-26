@@ -46,8 +46,6 @@ python app.py
 http://localhost:5000
 ```
 
-## Deployment on Vercel
-
 ### Prerequisites
 - Vercel account (free at https://vercel.com)
 - Git repository (GitHub, GitLab, or Bitbucket)
