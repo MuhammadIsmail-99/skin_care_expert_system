@@ -46,45 +46,6 @@ python app.py
 http://localhost:5000
 ```
 
-### Prerequisites
-- Vercel account (free at https://vercel.com)
-- Git repository (GitHub, GitLab, or Bitbucket)
-
-### Steps
-
-1. **Push to Git Repository**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git push -u origin main
-   ```
-
-2. **Deploy on Vercel**
-   - Go to https://vercel.com/new
-   - Select your Git repository
-   - Vercel will auto-detect Flask and configure the build
-   - Click "Deploy"
-
-3. **Alternative: Vercel CLI**
-   ```bash
-   npm i -g vercel
-   vercel
-   ```
-   Follow the prompts and your app will be deployed!
-
-### Configuration
-
-The `vercel.json` file contains the deployment configuration:
-- Python runtime version: 3.11
-- Build command: Installs dependencies
-- All routes route to app.py for Flask routing
-
-### Environment Variables
-
-If needed, add environment variables in Vercel dashboard:
-- Project Settings → Environment Variables
-- Common ones: `FLASK_ENV=production`, `DEBUG=False`
 
 ## Project Structure
 
