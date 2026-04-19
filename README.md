@@ -1,120 +1,92 @@
-# Skincare Expert System
+# SkinExpert-AI: Dermatological Knowledge Engine 🧪
 
-An AI-powered web application that provides personalized skincare recommendations using a rule-based expert system with MYCIN-style certainty factors.
+[![AI-Certainty](https://img.shields.io/badge/Inference-MYCIN--Certainty-blueviolet)](https://github.com/MuhammadIsmail-99/skin_care_expert_system)
+[![Engine](https://img.shields.io/badge/Engine-Forward--Backward--Chaining-blue)](https://github.com/MuhammadIsmail-99/skin_care_expert_system)
 
-## Features
+An advanced, rule-based AI expert system designed to provide high-precision dermatological analysis and personalized skincare protocols. Utilizing **MYCIN-style certainty factors** and dual-mode inference engines, SkinExpert-AI bridges the gap between expert clinical knowledge and automated diagnostic support.
 
-- **Goal-Based Interface**: Select skincare concerns (acne, anti-aging, pigmentation, etc.)
-- **Goal-Specific Symptoms**: Input symptoms tailored to your selected concern
-- **Expert System Inference**: Forward and backward chaining algorithms
-- **Certainty Factors**: MYCIN-style confidence scoring for recommendations
-- **Full Analysis Mode**: Comprehensive symptom input for all skin conditions
-- **Modern UI**: Responsive, clean interface with smooth interactions
+---
 
-## Local Development
+## 🧠 Strategic Technical Architecture
+
+SkinExpert-AI is not just a recommendation tool; it is a sophisticated **Knowledge-Based System (KBS)** architected for deterministic reasoning under uncertainty.
+
+### 🔬 Core AI Methodologies
+- **Inference Strategy**: Implements both **Forward Chaining** (data-driven) for discovery and **Backward Chaining** (goal-driven) for targeted diagnostic validation.
+- **Probabilistic Reasoning**: Integrated **MYCIN-style Certainty Factors (CF)** to handle multi-symptom uncertainty, calculating cumulative confidence scores for every recommendation.
+- **Conflict Resolution**: Advanced priority-based resolution for rule firing within the 200+ rule knowledge base.
+- **Knowledge Representation**: Structured JSON-based ontology with hierarchical symptom-condition mapping.
+
+---
+
+## 🛠️ Integrated Feature Stack
+
+- **Goal-Directed Diagnostics**: Targeted analysis for specific outcomes (Anti-aging, Acne management, Pigmentation correction).
+- **Dynamic Symptom Mapping**: Context-aware symptom collection that adapts based on the initial inference path.
+- **Dermatological Knowledge Base**: A robust library of 200+ clinical rules governing ingredient efficacy and skin pathology.
+- **Clinical Certainty Scoring**: Real-time confidence metrics (0.0 - 1.0) provided with every treatment recommendation.
+- **Industrial UI**: A high-performance, minimalist interface built for clinical interaction and clear data visualization.
+
+---
+
+## 🏗️ Technical Implementation
+
+### System Components
+```bash
+expertsys/
+├── expert_system.py       # Core Inference Engine (Forward/Backward logic)
+├── skincare.json          # Knowledge Base Ontology (200+ rules)
+├── app.py                 # Flask-based RESTful API Interface
+└── templates/             # High-performance UX (Industrial Design)
+```
+
+### Inference API Example
+```json
+POST /api/diagnose
+{
+  "symptoms": {
+    "Persistent_Redness": 0.9,
+    "Surface_Sensitivity": 0.7
+  },
+  "method": "forward",
+  "threshold": 0.4
+}
+```
+
+---
+
+## 🚦 Deployment & Execution
 
 ### Prerequisites
 - Python 3.11+
-- pip
+- Virtual Environment (Recommended)
 
-### Setup
+### Local Initialization
+1. **Clone & Enter**:
+   ```bash
+   git clone https://github.com/MuhammadIsmail-99/skin_care_expert_system.git
+   cd skin_care_expert_system
+   ```
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd expertsys
-```
+2. **Environment Setup**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\\Scripts\\activate
+   pip install -r requirements.txt
+   ```
 
-2. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+3. **Launch Engine**:
+   ```bash
+   python app.py
+   ```
+   Access the dashboard at `http://localhost:5000`
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+---
 
-4. Run the application:
-```bash
-python app.py
-```
+## 📜 Intellectual Property
+Distributed under the MIT License. Designed for strategic AI engineering demonstrations and clinical logic research.
 
-5. Open in browser:
-```
-http://localhost:5000
-```
-
-
-## Project Structure
-
-```
-expertsys/
-├── app.py                 # Flask application
-├── expert_system.py       # Expert system engine
-├── skincare.json          # Knowledge base (200 rules)
-├── requirements.txt       # Python dependencies
-├── vercel.json           # Vercel deployment config
-├── build.json            # Build configuration
-└── templates/
-    ├── landing.html      # Goal selection page
-    ├── goal-symptoms.html # Goal-specific symptom input
-    └── index.html        # Full analysis page
-```
-
-## API Endpoints
-
-### GET `/`
-Landing page with goal cards
-
-### GET `/goal-symptoms`
-Goal-specific symptom input page (query param: `goal`)
-
-### GET `/analysis`
-Full analysis page with all symptoms
-
-### GET `/api/symptoms`
-Returns available symptoms organized by category
-
-### GET `/api/goals`
-Returns all possible treatment goals
-
-### POST `/api/diagnose`
-Analyzes symptoms and returns recommendations
-- Request body:
-  ```json
-  {
-    "symptoms": {"Symptom1": 0.9, "Symptom2": 0.7},
-    "method": "forward",
-    "threshold": 0.3
-  }
-  ```
-
-## Knowledge Base
-
-The system uses 200+ rules with:
-- If-Then logic expressions
-- Certainty factors (0-1 range)
-- Priority-based conflict resolution
-- Forward and backward chaining inference
-
-## Browser Support
-
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers
-
-## License
-
-MIT
-
-## Contributing
-
-Feel free to submit issues and enhancement requests!
-
-## Support
-
-For issues or questions, please open an issue on the repository.
-#
+---
+<p align=\"center\">
+  <i>\"Engineering certainty in an uncertain world.\" — AI Strategic Systems</i>
+</p>
